@@ -2,107 +2,193 @@
 
 {% block body %}
 
+
 <style>
-    .wrapper {
-        width: 100%;
-        height: auto;
-        min-height: 100vh;
-        padding: 50px 20px;
-        padding-top: 100px;
-        display: flex;
-        background-image: linear-gradient(-20deg, #36D1DC 0%, #4caac9 100%);
+    .form-box{
+        padding: 20px;
     }
-    @media screen and (max-width: 768px) {
-        .wrapper {
-            height: auto;
-            min-height: 100vh;
-            padding-top: 100px;
-        }
-    }
-    
-    #wrapper input {
-        display: none;
-    }
-    #wrapper label {
-        cursor: pointer;
-        font-size: 40px;
-        color: yellow;
-        display: block;
-        width: 50px;
-        height: 50px;
-        line-height: 60px;
-        text-align: center;
-        float: left;
-        transition: all 0.2s;
-        text-shadow: 0 3px 3px #2b3c4e;
-    }
-     #wrapper label:hover {
-         font-size: 50px;
-         color: #fff;
-         text-shadow: 0 0 5px #b9c9d8;
-    }
-    #wrapper label:before {
-         display: inline;
-         width: auto;
-         height: auto;
-         line-height: normal;
-         vertical-align: baseline;
-         margin-top: 0;
-         font-family: FontAwesome;
-         font-weight: normal;
-         font-style: normal;
-         text-decoration: inherit;
-         -webkit-font-smoothing: antialiased;
-         content: "\f005";
-    }
-    #wrapper input:checked + label ~ label:before {
-         content: "\f006";
-    }
-     #wrapper {
-         display: inline-block;
-    }
-     #wrapper:hover label:before {
-         content: "\f005";
-    }
-     #wrapper:hover label:hover ~ label:before {
-         content: "\f006";
+    .form-box:hover{
+        background-color: rgba(120, 120, 120, 0.5);
+        color: white;
+        transition: all 0.5s;        
     }
 </style>
 
 <form method='post'>
-    {% csrf_token %}
-    
-    <div id="wrapper">
-        <input type="radio" id="star1" name="star" value="1"/>
-        <label for="star1"></label>
-        <input type="radio" id="star2" name="star" value="2"/>
-        <label for="star2"></label>
-        <input type="radio" id="star3" name="star" value="3"/>
-        <label for="star3"></label>
-        <input type="radio" id="star4" name="star" value="4"/>
-        <label for="star4"></label>
-        <input type="radio" id="star5" name="star" value="5"/>
-        <label for="star5"></label>
+<div class="form-box">
+    <div>Uniform and Punctuality
+        
+            {% csrf_token %}
 
-        {% if user.feedback_given %}
-            <div>
-                heyy
+            <div id="wrapper">
+                <input type="radio" id="star1" name="uniform_and_punctuality" value="1"/>
+                <label for="star1"></label>
+                <input type="radio" id="star2" name="uniform_and_punctuality" value="2"/>
+                <label for="star2"></label>
+                <input type="radio" id="star3" name="uniform_and_punctuality" value="3"/>
+                <label for="star3"></label>
+                <input type="radio" id="star4" name="uniform_and_punctuality" value="4"/>
+                <label for="star4"></label>
+                <input type="radio" id="star5" name="uniform_and_punctuality" value="5"/>
+                <label for="star5"></label>
+
+                {% if user.feedback_given %}
+                    <div>
+                        heyy
+                    </div>
+                <script>
+                    document.getElementById("star{{user.rating}}").checked = "checked";
+                </script>
+                {% endif %}
             </div>
-        <script>
-            document.getElementById("star{{user.rating}}").checked = "checked";
-        </script>
-        {% endif %}
+    </div>
+</div>
 
-        <button>
-            Rate!
-        </button>
+<div class="form-box">
+    <div>Cleanliness and Hygiene
+
+            <div id="wrapper">
+                <input type="radio" id="star1" name="cleanliness_and_hygiene" value="1"/>
+                <label for="star1"></label>
+                <input type="radio" id="star2" name="cleanliness_and_hygiene" value="2"/>
+                <label for="star2"></label>
+                <input type="radio" id="star3" name="cleanliness_and_hygiene" value="3"/>
+                <label for="star3"></label>
+                <input type="radio" id="star4" name="cleanliness_and_hygiene" value="4"/>
+                <label for="star4"></label>
+                <input type="radio" id="star5" name="cleanliness_and_hygiene" value="5"/>
+                <label for="star5"></label>
+
+                {% if user.feedback_given %}
+                <script>
+                    document.getElementById("star{{user.rating}}").checked = "checked";
+                </script>
+                {% endif %}
+        </div>
     </div>
+</div>
+
+<div class="form-box">
+    <div>Waste Disposal
+
+            <div id="wrapper">
+                <input type="radio" id="star1" name="waste_disposal" value="1"/>
+                <label for="star1"></label>
+                <input type="radio" id="star2" name="waste_disposal" value="2"/>
+                <label for="star2"></label>
+                <input type="radio" id="star3" name="waste_disposal" value="3"/>
+                <label for="star3"></label>
+                <input type="radio" id="star4" name="waste_disposal" value="4"/>
+                <label for="star4"></label>
+                <input type="radio" id="star5" name="waste_disposal" value="5"/>
+                <label for="star5"></label>
+
+                {% if user.feedback_given %}
+                <script>
+                    document.getElementById("star{{user.rating}}").checked = "checked";
+                </script>
+                {% endif %}
+            </div>
+    </div>
+</div>
+
+<div class="form-box">
+    <div>Quality of Ingredients
+
+            <div id="wrapper">
+                <input type="radio" id="star1" name="quality_of_ingredients" value="1"/>
+                <label for="star1"></label>
+                <input type="radio" id="star2" name="quality_of_ingredients" value="2"/>
+                <label for="star2"></label>
+                <input type="radio" id="star3" name="quality_of_ingredients" value="3"/>
+                <label for="star3"></label>
+                <input type="radio" id="star4" name="quality_of_ingredients" value="4"/>
+                <label for="star4"></label>
+                <input type="radio" id="star5" name="quality_of_ingredients" value="5"/>
+                <label for="star5"></label>
+
+                {% if user.feedback_given %}
+                <script>
+                    document.getElementById("star{{user.rating}}").checked = "checked";
+                </script>
+                {% endif %}
+            </div>
+    </div>
+</div>
+
+<div class="form-box">
+    <div>Overall Satisfaction of Breakfast
+
+            <div id="wrapper">
+                <input type="radio" id="star1" name="overall_satisfaction_of_breakfast" value="1"/>
+                <label for="star1"></label>
+                <input type="radio" id="star2" name="overall_satisfaction_of_breakfast" value="2"/>
+                <label for="star2"></label>
+                <input type="radio" id="star3" name="overall_satisfaction_of_breakfast" value="3"/>
+                <label for="star3"></label>
+                <input type="radio" id="star4" name="overall_satisfaction_of_breakfast" value="4"/>
+                <label for="star4"></label>
+                <input type="radio" id="star5" name="overall_satisfaction_of_breakfast" value="5"/>
+                <label for="star5"></label>
+
+                {% if user.feedback_given %}
+                <script>
+                    document.getElementById("star{{user.rating}}").checked = "checked";
+                </script>
+                {% endif %}
+            </div>
+    </div>
+</div>
+
+<div class="form-box">
+    <div>Overall Satisfaction of Lunch
+
+            <div id="wrapper">
+                <input type="radio" id="star1" name="overall_satisfaction_of_lunch" value="1"/>
+                <label for="star1"></label>
+                <input type="radio" id="star2" name="overall_satisfaction_of_lunch" value="2"/>
+                <label for="star2"></label>
+                <input type="radio" id="star3" name="overall_satisfaction_of_lunch" value="3"/>
+                <label for="star3"></label>
+                <input type="radio" id="star4" name="overall_satisfaction_of_lunch" value="4"/>
+                <label for="star4"></label>
+                <input type="radio" id="star5" name="overall_satisfaction_of_lunch" value="5"/>
+                <label for="star5"></label>
+
+                {% if user.feedback_given %}
+                <script>
+                    document.getElementById("star{{user.rating}}").checked = "checked";
+                </script>
+                {% endif %}
+            </div>
+    </div>
+</div>
+
+<div class="form-box">
+    <div>Overall Satisfaction of Dinner
+            <div id="wrapper">
+                <input type="radio" id="star1" name="overall_satisfaction_of_dinner" value="1"/>
+                <label for="star1"></label>
+                <input type="radio" id="star2" name="overall_satisfaction_of_dinner" value="2"/>
+                <label for="star2"></label>
+                <input type="radio" id="star3" name="overall_satisfaction_of_dinner" value="3"/>
+                <label for="star3"></label>
+                <input type="radio" id="star4" name="overall_satisfaction_of_dinner" value="4"/>
+                <label for="star4"></label>
+                <input type="radio" id="star5" name="overall_satisfaction_of_dinner" value="5"/>
+                <label for="star5"></label>
+
+                {% if user.feedback_given %}
+                <script>
+                    document.getElementById("star{{user.rating}}").checked = "checked";
+                </script>
+                {% endif %}
+            </div>
+    </div>
+</div>
     
-{% if done %}
-    <div>
-        {{ done }}
-    </div>
-{% endif %}
+    <button> Rate ! </button>
 </form>
+
 
 {% endblock %}

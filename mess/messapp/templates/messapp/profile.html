@@ -2,4 +2,53 @@
 
 {% block body %}
 
+<style>
+    .outer-box{
+        padding: 20px;
+        background: rgba(120, 120, 120, 0.5);
+        margin-top: 20px;
+    }
+    .inner-box{
+        padding: 1%;
+        transition: background 0.5s;
+    }
+    .inner-box:hover{
+        background: rgba(120, 120, 120, 0.2);
+        transition: background 0.5s;
+    }
+    .col1{
+        font-size: 20px;
+        width: 20%;
+    }
+    .col2{
+        display: inline-block;
+        width: 50%;
+        float: right;
+    }
+</style>
+
+<div class="outer-box">
+    <div class="inner-box">
+        <div><span class="col1"> Name  </span><span class="col2"> {{ user.first_name }} {{ user.last_name }} </span> </div>
+    </div>
+    <div class="inner-box">
+        <div><span class="col1"> Username  </span><span class="col2"> {{ user.username }} </span> </div>
+    </div>
+    <div class="inner-box">
+        <div><span class="col1"> Roll No   </span><span class="col2"> {{ user.roll }} </span> </div>
+    </div>
+    <div class="inner-box">
+        <div><span class="col1"> Subscribed Hostel   </span><span class="col2"> {{ user.subscribed_mess_hostel }} </span> </div>
+    </div>
+    <div class="inner-box">
+        <div><span class="col1"> Feedback  </span>
+        {% if user.feedback_given %}
+            <span class="col2"> Done </span>
+        {% else %}
+            <span class="col2"> Give your feedback for previous month <a href="{% url 'messapp:feedback' %}">here</a> </span>
+        {% endif %}
+        </div> 
+    </div>
+</div>
+
 {% endblock %}
