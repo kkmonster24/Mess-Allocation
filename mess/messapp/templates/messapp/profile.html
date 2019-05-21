@@ -2,53 +2,95 @@
 
 {% block body %}
 
-<style>
-    .outer-box{
-        padding: 20px;
-        background: rgba(120, 120, 120, 0.5);
-        margin-top: 20px;
-    }
-    .inner-box{
-        padding: 1%;
-        transition: background 0.5s;
-    }
-    .inner-box:hover{
-        background: rgba(120, 120, 120, 0.2);
-        transition: background 0.5s;
-    }
-    .col1{
-        font-size: 20px;
-        width: 20%;
-    }
-    .col2{
-        display: inline-block;
-        width: 50%;
-        float: right;
-    }
-</style>
 
-<div class="outer-box">
-    <div class="inner-box">
-        <div><span class="col1"> Name  </span><span class="col2"> {{ user.first_name }} {{ user.last_name }} </span> </div>
-    </div>
-    <div class="inner-box">
-        <div><span class="col1"> Username  </span><span class="col2"> {{ user.username }} </span> </div>
-    </div>
-    <div class="inner-box">
-        <div><span class="col1"> Roll No   </span><span class="col2"> {{ user.roll }} </span> </div>
-    </div>
-    <div class="inner-box">
-        <div><span class="col1"> Subscribed Hostel   </span><span class="col2"> {{ user.subscribed_mess_hostel }} </span> </div>
-    </div>
-    <div class="inner-box">
-        <div><span class="col1"> Feedback  </span>
-        {% if user.feedback_given %}
-            <span class="col2"> Done </span>
-        {% else %}
-            <span class="col2"> Give your feedback for previous month <a href="{% url 'messapp:feedback' %}">here</a> </span>
-        {% endif %}
-        </div> 
-    </div>
-</div>
 
-{% endblock %}
+
+<div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+
+                    
+                        <div class="card-title mb-4">
+                            <div class="d-flex justify-content-start">
+                                
+                                <div class="userData ml-3">
+                                    <h1 class="d-block" style="font-size: 3rem; font-weight: bold"><strong>{{user.first_name}}</strong> </h1>
+                                    
+                                </div>
+                               
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                       
+                                    
+                                <div class="tab-content ml-1" id="myTabContent">
+                                    
+                                        
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold ;"> Full Name</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                               {{user.first_name}} {{user.last_name}}
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Birth Date</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                               
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Roll Number</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{user.roll}}
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Hostel</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{user.hostel}}
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Mess Subscription</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{user.subscribed_mess_hostel}}
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <h2 style="font-family:Comic Sans MS">If the above details are not correct please contact Academic Section.</h2>
+
+                                   
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+ {%endblock%}
