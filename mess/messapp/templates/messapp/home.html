@@ -1,0 +1,12 @@
+{% extends logged|yesno:'baseLoggedIn.html,base.html' %}
+
+{% block body %}
+
+{% if logged %}
+    <h3>Welcome {{ user.first_name }}</h3>
+{% else %}
+<div>It is {% now "jS F Y H:i" %}</div>
+<div> you are not logged in , click <a href="{% url 'messapp:login' %}">here </a> to login.</div>
+{% endif %}
+
+{% endblock %}

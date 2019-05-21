@@ -1,0 +1,108 @@
+{% extends 'baseLoggedIn.html' %}
+
+{% block body %}
+
+<style>
+    .wrapper {
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        padding: 50px 20px;
+        padding-top: 100px;
+        display: flex;
+        background-image: linear-gradient(-20deg, #36D1DC 0%, #4caac9 100%);
+    }
+    @media screen and (max-width: 768px) {
+        .wrapper {
+            height: auto;
+            min-height: 100vh;
+            padding-top: 100px;
+        }
+    }
+    
+    #wrapper input {
+        display: none;
+    }
+    #wrapper label {
+        cursor: pointer;
+        font-size: 40px;
+        color: yellow;
+        display: block;
+        width: 50px;
+        height: 50px;
+        line-height: 60px;
+        text-align: center;
+        float: left;
+        transition: all 0.2s;
+        text-shadow: 0 3px 3px #2b3c4e;
+    }
+     #wrapper label:hover {
+         font-size: 50px;
+         color: #fff;
+         text-shadow: 0 0 5px #b9c9d8;
+    }
+    #wrapper label:before {
+         display: inline;
+         width: auto;
+         height: auto;
+         line-height: normal;
+         vertical-align: baseline;
+         margin-top: 0;
+         font-family: FontAwesome;
+         font-weight: normal;
+         font-style: normal;
+         text-decoration: inherit;
+         -webkit-font-smoothing: antialiased;
+         content: "\f005";
+    }
+    #wrapper input:checked + label ~ label:before {
+         content: "\f006";
+    }
+     #wrapper {
+         display: inline-block;
+    }
+     #wrapper:hover label:before {
+         content: "\f005";
+    }
+     #wrapper:hover label:hover ~ label:before {
+         content: "\f006";
+    }
+</style>
+
+<form method='post'>
+    {% csrf_token %}
+    
+    <div id="wrapper">
+        <input type="radio" id="star1" name="star" value="1"/>
+        <label for="star1"></label>
+        <input type="radio" id="star2" name="star" value="2"/>
+        <label for="star2"></label>
+        <input type="radio" id="star3" name="star" value="3"/>
+        <label for="star3"></label>
+        <input type="radio" id="star4" name="star" value="4"/>
+        <label for="star4"></label>
+        <input type="radio" id="star5" name="star" value="5"/>
+        <label for="star5"></label>
+
+        {% if user.feedback_given %}
+            <div>
+                heyy
+            </div>
+        <script>
+            document.getElementById("star{{user.rating}}").checked = "checked";
+        </script>
+        {% endif %}
+
+        <button>
+            Rate!
+        </button>
+    </div>
+    
+{% if done %}
+    <div>
+        {{ done }}
+    </div>
+{% endif %}
+</form>
+
+{% endblock %}
